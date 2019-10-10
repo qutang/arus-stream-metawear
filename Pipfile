@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+
+[dev-packages]
+pytest = ">=5.2.1"
+"autopep8" = ">=1.4.4"
+
+[requires]
+python_version = "3.6"
