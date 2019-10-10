@@ -11,7 +11,7 @@ with open('requirements.txt', 'r') as fh:
 setuptools.setup(
     name="arus-stream-metawear",
     license="GNU",
-    version="0.1.0",
+    version="1.0.0",
     author="Qu Tang",
     author_email="tang.q@husky.neu.edu",
     description="Metawear stream for arus package",
