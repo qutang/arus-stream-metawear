@@ -1,4 +1,4 @@
-from arus_stream_metawear.metawear_stream import MetawearStream
+from arus_stream_metawear.stream import MetawearStream
 import logging
 from datetime import datetime
 

@@ -9,6 +9,11 @@ name = "pypi"
 [dev-packages]
 pytest = ">=5.2.1"
 "autopep8" = ">=1.4.4"
+"pdoc3" = "*"
 
 [requires]
 python_version = "3.6"
+
+[scripts]
+dev-doc="pdoc arus_stream_metawear --http localhost:1234 --template-dir templates"
+build-doc="pdoc --html --html-dir docs arus_stream_metawear --force"

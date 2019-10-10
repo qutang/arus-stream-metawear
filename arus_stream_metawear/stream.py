@@ -8,7 +8,7 @@ from arus.libs.date import parse_timestamp
 from mbientlab.metawear import cbindings, libmetawear
 from pymetawear.client import MetaWearClient
 
-from .metawear_timestamp_corrector import MetawearTimestampCorrector
+from .corrector import MetawearTimestampCorrector
 
 
 class MetawearStream(Stream):
