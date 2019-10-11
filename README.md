@@ -18,20 +18,22 @@ Windows SDK (10.0.17763.0)
 
 #### Installation
 
+Because one of the dependency is from git repository, pypi package is not available. Users should install directly from git repository.
+
 ```bash
-> pip install arus-stream-metawear 
+> pip install git+https://github.com/qutang/arus-stream-metawear.git#egg=arus-stream-metawear
 ```
 
 Or `pipenv`
 
 ```bash
-> pipenv install arus-stream-metawear
+> pipenv install git+https://github.com/qutang/arus-stream-metawear.git#egg=arus-stream-metawear
 ```
 
 Or `poetry`
 
 ```bash
-> poetry add arus-stream-metawear
+> poetry add --git https://github.com/qutang/arus-stream-metawear.git arus-stream-metawear
 ```
 
 
