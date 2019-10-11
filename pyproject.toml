@@ -14,9 +14,6 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Human Machine Interfaces",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-packages = [
-    { include = "arus" }
-]
 include = [
     "examples/*",
 ]
