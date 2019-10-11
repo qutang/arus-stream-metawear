@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "arus-stream-metawear"
+version = "1.0.0"
+description = "arus plugin that helps creating stream for metawear devices"
+authors = ["qutang <tqshelly@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/qutang/arus-stream-metawear"
+documentation = "https://qutang.github.io/arus-stream-metawear/"
+keywords = [
+    "ubiquitous computing", "sensing", "data processing", "bluetooth", "internet of things"
+]
+classifiers = [
+    "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+packages = [
+    { include = "arus" }
+]
+include = [
+    "examples/*",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+pymetawear = {git = "https://github.com/qutang/pymetawear.git"}
+arus = "^0.0.7"
+[tool.poetry.dev-dependencies]
+pylint = "^2.4"
+pytest = "^5.2"
+autopep8 = "^1.4"
+pdoc3 = "^0.7.1"
+twine = "^2.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

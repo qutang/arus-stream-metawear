@@ -10,6 +10,7 @@ name = "pypi"
 pytest = ">=5.2.1"
 "autopep8" = ">=1.4.4"
 "pdoc3" = "*"
+portray = "*"
 
 [requires]
 python_version = "3.6"

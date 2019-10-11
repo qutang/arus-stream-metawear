@@ -1,2 +1,0 @@
-arus@git+https://github.com/qutang/arus.git@master
-pymetawear@git+https://github.com/qutang/pymetawear.git@master

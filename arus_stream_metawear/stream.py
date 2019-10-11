@@ -4,7 +4,7 @@ import time
 import pandas as pd
 import numpy as np
 from arus.core.stream import Stream
-from arus.libs.date import parse_timestamp
+from arus.core.libs.date import parse_timestamp
 from mbientlab.metawear import cbindings, libmetawear
 from pymetawear.client import MetaWearClient
 
