@@ -8,6 +8,14 @@
 python >= 3.6
 ```
 
+##### Linux
+
+```bash
+libbluetooth-dev
+libboost-all-dev
+bluez
+```
+
 ##### Windows
 
 ```bash
