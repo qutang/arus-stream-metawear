@@ -23,7 +23,8 @@ jobs:
     - name: Setup system dependencies
       run: | 
         sudo apt install bluez
-        sudo apt-get install libboost-all-dev
+        sudo apt install libboost-all-dev
+        sudo apt install libbluetooth-dev
 
     - name: Setup python dev environment
       run: |
