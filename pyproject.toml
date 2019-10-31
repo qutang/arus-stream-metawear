@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "arus-stream-metawear"
-version = "1.0.0"
+version = "1.0.1"
 description = "arus plugin that helps creating stream for metawear devices"
 authors = ["qutang <tqshelly@gmail.com>"]
 license = "MIT"
