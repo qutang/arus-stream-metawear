@@ -21,7 +21,9 @@ jobs:
         architecture: 'x64' # (x64 or x86)
 
     - name: Setup system dependencies
-      run: sudo apt install bluez
+      run: | 
+        sudo apt install bluez
+        sudo apt-get install libboost-all-dev
 
     - name: Setup python dev environment
       run: |
