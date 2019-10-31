@@ -36,6 +36,7 @@ jobs:
       run: |
         git config --global user.email "tqshelly@gmail.com"
         git config --global user.name "github actions"
+        git pull
         poetry run semantic-release publish
       env:
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
