@@ -40,12 +40,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
-    - name: Build pypi package
-      run: poetry build
-
-    - name: Deploy to pypi
-      run: poetry run twine upload dist/* --skip-existing -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
-
     - name: Build website
       run: poetry run python doc.py
 
