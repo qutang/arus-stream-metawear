@@ -4,7 +4,6 @@ import time
 import pandas as pd
 import numpy as np
 from arus.core.stream import Stream
-from arus.core.libs.date import parse_timestamp
 from mbientlab.metawear import cbindings, libmetawear
 from pymetawear.client import MetaWearClient
 
@@ -22,36 +21,33 @@ class MetawearStream(Stream):
         ```python
         addr = "D2:C6:AF:2B:DB:22"
         stream = MetawearStream(data_source=addr, sr=50,
-                                grange=8, chunk_size=10, name='metawear-stream')
+                                grange=8, window_size=10, start_time=None, name='metawear-stream')
         stream.start(scheduler='thread')
         for data in stream.get_iterator():
             print(data.head())
         ```
     """
 
-    def __init__(self, data_source, sr=50, grange=8, chunk_size=10, session_begin=None, name='metawear-stream'):
+    def __init__(self, data_source, sr=50, grange=8, window_size=10, start_time=None, name='metawear-stream'):
         """
         Args:
             data_source (str): mac address of the metawear device.
             sr (int): the sampling rate (Hz) to be set for the given device.
             grange (int): the dynamice range (g) to be set for the given device.
-            chunk_size (int): the chunk size in seconds to load data in the iterator each time.
-            session_begin (float, int, datetime, datetime64, or str): the common start time used to segment chunks. This is used when there are multiple devices and you want to synchronize between them. If it is `None`, we will use the stream's first timestamp instead.
             name (str, optional): see `Stream.name`.
         """
-        super().__init__(data_source=data_source, name=name)
-        session_begin_ts = parse_timestamp(session_begin)
+        super().__init__(data_source=data_source, name=name,
+                         start_time=start_time, window_size=window_size)
         self._sr = sr
         self._grange = grange
-        self._chunk_size = chunk_size
         self._device = None
         self._corrector = MetawearTimestampCorrector(sr)
         self._chunk_buffer = []
-        self._chunk_boundary = np.floor(session_begin_ts.timestamp())
+        self._chunk_boundary = np.floor(self._start_time.timestamp())
         self._chunk_sample_count = 0
         if self._chunk_boundary is not None:
             logging.info('Use session begin time:' +
-                         session_begin_ts.strftime("%Y-%m-%d %H:%M:%S"))
+                         self._start_time.strftime("%Y-%m-%d %H:%M:%S"))
 
     def get_device_name(self):
         model_code = libmetawear.mbl_mw_metawearboard_get_model(
@@ -102,14 +98,14 @@ class MetawearStream(Stream):
         if package['ts_withloss'] < self._chunk_boundary:
             # discard samples in the past
             return
-        if package['ts_withloss'] - self._chunk_boundary >= self._chunk_size and len(self._chunk_buffer) == 0:
+        if package['ts_withloss'] - self._chunk_boundary >= self._window_size and len(self._chunk_buffer) == 0:
             # adjust chunk window to match the closest sample
             n_chunks = int((package['ts_withloss'] -
-                            self._chunk_boundary) / self._chunk_size)
-            self._chunk_boundary += n_chunks * self._chunk_size
-        if package['ts_withloss'] - self._chunk_boundary >= self._chunk_size:
+                            self._chunk_boundary) / self._window_size)
+            self._chunk_boundary += n_chunks * self._window_size
+        if package['ts_withloss'] - self._chunk_boundary >= self._window_size:
             df = self._format_chunk(self._chunk_buffer)
-            self._chunk_boundary += self._chunk_size
+            self._chunk_boundary += self._window_size
             self._chunk_buffer = []
             self._put_data_in_queue(df)
         package['ts_withloss'] = pd.Timestamp.fromtimestamp(
