@@ -22,6 +22,7 @@ jobs:
 
     - name: Setup system dependencies
       run: | 
+        sudo apt update
         sudo apt install bluez
         sudo apt install libboost-all-dev
         sudo apt install libbluetooth-dev
@@ -40,6 +41,12 @@ jobs:
         poetry run semantic-release publish
       env:
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+    - name: Build pypi package
+      run: poetry build
+
+    - name: Deploy to pypi
+      run: poetry run twine upload dist/* --skip-existing -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
 
     - name: Build website
       run: poetry run python doc.py
