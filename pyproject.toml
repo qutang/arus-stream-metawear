@@ -20,7 +20,7 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-pymetawear = {git = "https://github.com/qutang/pymetawear.git"}
+pymetawear = "^0.12.0"
 arus = "^0.4.0"
 [tool.poetry.dev-dependencies]
 pylint = "^2.4"
