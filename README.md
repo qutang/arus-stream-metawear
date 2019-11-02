@@ -1,4 +1,10 @@
+## Overview
+
 `arus-stream-metawear` package is a plugin for [`arus`](https://qutang.github.io/arus/) package. It provides extra functionality to stream data from metawear devices in real-time.
+
+[![PyPI version](https://badge.fury.io/py/arus-stream-metawear.svg)](https://badge.fury.io/py/arus-stream-metawear)
+[![Downloads](https://pepy.tech/badge/arus-stream-metawear)](https://pepy.tech/project/arus-stream-metawear)
+[![Build Status](https://github.com/qutang/arus/workflows/Continuous%20integration/badge.svg)](https://github.com/qutang/arus/actions)
 
 ### Get started
 
@@ -26,22 +32,20 @@ Windows SDK (10.0.17763.0)
 
 #### Installation
 
-Because one of the dependency is from git repository, pypi package is not available. Users should install directly from git repository.
-
 ```bash
-> pip install git+https://github.com/qutang/arus-stream-metawear.git#egg=arus-stream-metawear
+> pip install arus-stream-metawear
 ```
 
 Or `pipenv`
 
 ```bash
-> pipenv install git+https://github.com/qutang/arus-stream-metawear.git#egg=arus-stream-metawear
+> pipenv install arus-stream-metawear
 ```
 
 Or `poetry`
 
 ```bash
-> poetry add --git https://github.com/qutang/arus-stream-metawear.git arus-stream-metawear
+> poetry add arus-stream-metawear
 ```
 
 
