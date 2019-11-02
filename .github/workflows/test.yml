@@ -33,6 +33,7 @@ jobs:
 
     - name: Setup system dependencies
       run: | 
+        sudo apt update
         sudo apt install bluez
         sudo apt install libboost-all-dev
         sudo apt install libbluetooth-dev
