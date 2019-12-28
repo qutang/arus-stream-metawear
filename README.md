@@ -1,3 +1,7 @@
+ARCHIVED.
+
+This repo has been merged into @qutang/arus. Please refer to the main repo for the changes.
+
 ## Overview
 
 `arus-stream-metawear` package is a plugin for [`arus`](https://qutang.github.io/arus/) package. It provides extra functionality to stream data from metawear devices in real-time.
